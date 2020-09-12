@@ -14392,7 +14392,9 @@ Number of Features in BrowseNotesFile: 120
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Noted that some of the columns/features in the dataset are not available at the moment of investing until the loans have been issued. So these features should be removed, otherwise they would leek information from the future. We can use the variables that are in the data dictionary BrowseNoteFile, which lists all information available to investors when they are deciding whether to invest to any loans.</p>
+<h4 id="Data-leakage-in-Machine-Learning">Data leakage in Machine Learning<a class="anchor-link" href="#Data-leakage-in-Machine-Learning">&#182;</a></h4><p>What is data leakage in Machine Learning?</p>
+<p>Some of your predictors (features/indepedent variables) that you are using in training your predictive models happen to have information about your target variables. <a href="https://machinelearningmastery.com/data-leakage-machine-learning/">See more here</a>.</p>
+<p>Noted that some of the columns/features in the dataset are not available at the moment of investing until the loans have been issued. So these features should be removed, otherwise they would leek information from the future. We can use the variables that are in the data dictionary BrowseNoteFile, which lists only information available to investors when they are deciding whether to invest to any loans.</p>
 <p>Noted that some features were named slightly different between the data dictionary sheet and the column names in the dataset but they referred to the same thing, so we will need to match the format between these column names.</p>
 
 </div>
@@ -14735,6 +14737,13 @@ dtype: object</pre>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Check-missing-values-in-the-target-variable">Check missing values in the target variable<a class="anchor-link" href="#Check-missing-values-in-the-target-variable">&#182;</a></h4>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[28]:</div>
@@ -15075,6 +15084,26 @@ height=569
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Re-define-target-variable-(to-be-binary-)">Re-define target variable (to be binary )<a class="anchor-link" href="#Re-define-target-variable-(to-be-binary-)">&#182;</a></h3><p>There are 9 loan statuses:</p>
+<ul>
+<li>Fully Paid </li>
+<li>Current, </li>
+<li>Charged Off</li>
+<li>In Grace Period</li>
+<li>Late (31-120 days)</li>
+<li>Late (16-30 days)</li>
+<li>Default</li>
+<li>Does not meet the credit policy. Status:Fully Paid,</li>
+<li>Does not meet the credit policy. Status:Charged Off </li>
+</ul>
+<p><strong>We consider "Fully Paid", "Current", and "Does not meet the credit policy. Status:Fully Paid" as a good-condition loans and everything else as bad-condition loans.</strong></p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[33]:</div>
@@ -15284,7 +15313,7 @@ height=283
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Overview-of-Loans">Overview of Loans<a class="anchor-link" href="#Overview-of-Loans">&#182;</a></h4><p>Let's get some basic information about the loans of lending club. I will be focusing on the followings:</p>
+<h4 id="Overview-of-Loans">Overview of Loans<a class="anchor-link" href="#Overview-of-Loans">&#182;</a></h4><p>Let's explore the data to see how features affect loan conditions. I will be focusing on the followings:</p>
 <ul>
 <li><p>loan amount vs funded amount</p>
 </li>
@@ -15293,6 +15322,20 @@ height=283
 <li><p>loans terms</p>
 </li>
 <li><p>loan issue year</p>
+</li>
+<li><p>Borrower's address (state)</p>
+</li>
+<li><p>Borrower's Annual Income</p>
+</li>
+<li><p>Borrower's Employment Length</p>
+</li>
+<li><p>Loan Grade</p>
+</li>
+<li><p>Home ownership</p>
+</li>
+<li><p>Debt-to-income ratioo</p>
+</li>
+<li><p>Loan Purpose</p>
 </li>
 </ul>
 
@@ -15505,7 +15548,7 @@ Bad Loans: 15.694198443769201
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Based on the distribution plot and mean statistics, bad loans tend to have a high interest rate than good loans of lending club.</p>
+<p><strong>Based on the distribution plot and mean statistics, bad loans tend to have a high interest rate than good loans of lending club.</strong></p>
 
 </div>
 </div>
@@ -15553,6 +15596,14 @@ height=279
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The plots shows that the better grade of loans, the lower interest rate.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -15609,6 +15660,14 @@ height=279
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>The plot above shows that a loan with shorter loan term (36 months compared to 60 months) is more like to turn into a bad loan.</strong></p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -16107,6 +16166,14 @@ height=723
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Both the bar plots and summary table (default rate by state) show that some state have higher default rate than others.</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Borrower's-Annual-Income">Borrower's Annual Income<a class="anchor-link" href="#Borrower's-Annual-Income">&#182;</a></h4>
 </div>
 </div>
@@ -16381,7 +16448,7 @@ height=428
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can see from the plot above, the higher the income level, the lower the loan default rate.</p>
+<p><strong>We can see from the plot above, the higher the income level, the lower the loan default rate.</strong></p>
 
 </div>
 </div>
@@ -16498,7 +16565,7 @@ emp_length &lt;= 3 ys:  0.2541
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>There is no clear pattern between loan default and employment length. Noted that both people with long employment length(10+ years) and short employment length(&lt;= 3 years) tend to borrow more.</p>
+<p><strong>There is no clear pattern between loan default and employment length. Noted that both people with long employment length(10+ years) and short employment length(&lt;= 3 years) tend to borrow more.</strong></p>
 
 </div>
 </div>
@@ -16635,7 +16702,7 @@ height=388
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>From the plot above, noted that the better the loan grade, the lower the "bad" loan ratios</p>
+<p><strong>From the plot above, noted that the better the loan grade, the lower the "bad" loan ratios.</strong></p>
 
 </div>
 </div>
@@ -16984,6 +17051,22 @@ height=414
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>Dividing loans into 4 groupbs based on borrowers' debt-to-income ratio:</p>
+<ul>
+<li>Low dti (below 25%): dti &lt; 11.89</li>
+<li>Median dti (between 25% and 75%): 11.89 &lt;= dti &lt; 24.48</li>
+<li>High dti (above 75% below 95%):  24.48 &lt;= dti &lt; 33.88</li>
+<li>Extreme high dti (Above 95%): dti &gt; 33.88</li>
+</ul>
+<p>For high and extreme-high debt-to-income ratio groups, the percentage of loans that are in bad-condition(label = 1) is the highest, above 16%. The group of loans whose borrowers have median debt-to-income ratio has about 13% of chance of turning in bad loans. The borrowers has low debt-to-income ratio is least likely to bad loans (10.6%).</p>
+<p><strong>What the plot above shows is: the higher debt-to-income ratio, the higher chance that the loans in bad-condition.</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Loan-Purpose">Loan Purpose<a class="anchor-link" href="#Loan-Purpose">&#182;</a></h4>
 </div>
 </div>
@@ -17042,7 +17125,7 @@ height=457
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Noted that about 56% of the loans are used for debt_consolidation, 22.87% for  credit card, and 6.66% for home_improvement.</p>
+<p><strong>Noted that about 56% of the loans are used for debt_consolidation, 22.87% for  credit card, and 6.66% for home_improvement&lt;</strong></p>
 
 </div>
 </div>
