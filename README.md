@@ -3,7 +3,7 @@ The project is split into 3 parts. This notebook is the [Part 1 - Data Explorato
 
 ### Data
 
-The data for this project is available on Kaggle.com and also provided by the official website of Lending Club. It has more than 2.2M rows of loan entries and 150 column of features
+The dataset for this project is available on Kaggle.com and also provided by the official website of Lending Club. It has more than 2.2M rows of loan entries and 150 column of features
 
 [Link to Data](https://www.kaggle.com/wordsforthewise/lending-club)
 
