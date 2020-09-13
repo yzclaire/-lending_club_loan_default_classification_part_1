@@ -1,7 +1,10 @@
 # lending_club_loan_default_classification_part_1
 The project is split into 3 parts. This notebook is the [Part 1 - Data Exploratory Analysis on Lending Club Loan Data](https://yzclaire.github.io/lending_club_loan_default_classification_part_1/)
 
-### Data Source
+### Data
+
+The data for this project is available on Kaggle.com and also provided by the official website of Lending Club. It has more than 2.2M rows of loan entries and 150 column of features
+
 [Link to Data](https://www.kaggle.com/wordsforthewise/lending-club)
 
 ### Outlines of the whole project
