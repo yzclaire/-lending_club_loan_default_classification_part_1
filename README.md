@@ -1,13 +1,15 @@
 # lending_club_loan_default_classification_part_1
 The project is split into 3 parts. This notebook is the [Part 1 - Data Exploratory Analysis on Lending Club Loan Data](https://yzclaire.github.io/lending_club_loan_default_classification_part_1/)
 
+
 ### Data
 
 The dataset for this project is available on Kaggle.com and also provided by the official website of Lending Club. It has more than 2.2M rows of loan entries and 150 column of features
 
 [Link to Data](https://www.kaggle.com/wordsforthewise/lending-club)
 
-### Outlines of the whole project
+
+### Project Outlines:
 
 #### 1. Define goal 
 
@@ -24,33 +26,31 @@ The dataset for this project is available on Kaggle.com and also provided by the
     c.correlation analysis and remove multicollinearity
     d.Data Visualization to explore relationship between target and predicting variables
     
-#### 3. Data cleansing and Feature Engineering
+#### 3. Data Cleansing and Feature Engineering
 
-    a. Impute missing values
+    a. Handling missing values
     b. Transform any characteristics or categorical variables into numeric
     c. Create new features from existing features
 
-#### 4. Feature Selections
-    a. Remove variables according to correlation analysis
-    b. Logistic regression with L1 regularization (coeffecients not zero)
-    c. Random Forest model built-in feature importance
-    
-####  Data Preprocessing
-
-#### 5. Build Model and evaluate model performance with validation set 
-    a. Logistic regression with L1 regularization model
-    b. Random Forest model 
-    c. Xgboost model
-        -hyperparameters Tuning
+#### 4. Prepare dataset for modeling:
+    - Standard scale
+    - Handling Dataset imbalance issues (upsampling)
         
- 
-#### 6. Assess any additional feature engineering or feature selection opportunity based on model results
+#### 5. Model Training and Evaluation
+    1). Logistic regression with L1 regularization model
+    2). Random Forest model 
+    3). Xgboost model
+        -hyperparameters Tuning
+    
+#### 6. Feature Selections Consideration
+    - Remove variables according to correlation analysis
+    - Logistic regression with L1 regularization (coeffecients not zero)
+    - Random Forest model built-in feature importance
 
-#### 7. Choose the best model and run prediction on test dataset
+#### 7. Assess any additional feature engineering or feature selection opportunity based on model results
 
-#### 8. Evaluate final model performance 
+#### 8. Choose the best model and evaluate prediction on test dataset
 
 #### 9. Areas of improvements
 
  
-
