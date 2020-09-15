@@ -13099,29 +13099,32 @@ c.correlation analysis and remove multicollinearity
 d.Data Visualization to explore relationship between target and predicting variables
 
 </code></pre>
-<h4 id="3.-Data-cleansing-and-Feature-Engineering">3. Data cleansing and Feature Engineering<a class="anchor-link" href="#3.-Data-cleansing-and-Feature-Engineering">&#182;</a></h4>
-<pre><code>a. Impute missing values
+<h4 id="3.-Data-Cleansing-and-Feature-Engineering">3. Data Cleansing and Feature Engineering<a class="anchor-link" href="#3.-Data-Cleansing-and-Feature-Engineering">&#182;</a></h4>
+<pre><code>a. Handling missing values
 b. Transform any characteristics or categorical variables into numeric
 c. Create new features from existing features
 
 </code></pre>
-<h4 id="4.-Feature-Selections">4. Feature Selections<a class="anchor-link" href="#4.-Feature-Selections">&#182;</a></h4>
-<pre><code>a. Remove variables according to correlation analysis
-b. Logistic regression with L1 regularization (coeffecients not zero)
-c. Random Forest model built-in feature importance
+<h4 id="4.-Prepare-dataset-for-modeling:">4. Prepare dataset for modeling:<a class="anchor-link" href="#4.-Prepare-dataset-for-modeling:">&#182;</a></h4>
+<pre><code>- Standard scale
+- Handling Dataset imbalance issues (upsampling)
 
 </code></pre>
-<h4 id="Data-Preprocessing">Data Preprocessing<a class="anchor-link" href="#Data-Preprocessing">&#182;</a></h4><h4 id="5.-Build-Model-and-evaluate-model-performance-with-validation-set">5. Build Model and evaluate model performance with validation set<a class="anchor-link" href="#5.-Build-Model-and-evaluate-model-performance-with-validation-set">&#182;</a></h4>
-<pre><code>a. Logistic regression with L1 regularization model
-b. Random Forest model 
-c. Xgboost model
+<h4 id="5.-Model-Training-and-Evaluation">5. Model Training and Evaluation<a class="anchor-link" href="#5.-Model-Training-and-Evaluation">&#182;</a></h4>
+<pre><code>1). Logistic regression with L1 regularization model
+2). Random Forest model 
+3). Xgboost model
     -hyperparameters Tuning
 
-
+</code></pre>
+<h4 id="6.-Feature-Selections-Consideration">6. Feature Selections Consideration<a class="anchor-link" href="#6.-Feature-Selections-Consideration">&#182;</a></h4>
+<pre><code>- Remove variables according to correlation analysis
+- Logistic regression with L1 regularization (coeffecients not zero)
+- Random Forest model built-in feature importance
 
 </code></pre>
-<h4 id="6.-Assess-any-additional-feature-engineering-or-feature-selection-opportunity-based-on-model-results">6. Assess any additional feature engineering or feature selection opportunity based on model results<a class="anchor-link" href="#6.-Assess-any-additional-feature-engineering-or-feature-selection-opportunity-based-on-model-results">&#182;</a></h4><h4 id="7.-Choose-the-best-model-and-run-prediction-on-test-dataset">7. Choose the best model and run prediction on test dataset<a class="anchor-link" href="#7.-Choose-the-best-model-and-run-prediction-on-test-dataset">&#182;</a></h4><h4 id="8.-Evaluate-final-model-performance">8. Evaluate final model performance<a class="anchor-link" href="#8.-Evaluate-final-model-performance">&#182;</a></h4><h4 id="9.-Areas-of-improvements">9. Areas of improvements<a class="anchor-link" href="#9.-Areas-of-improvements">&#182;</a></h4><h3 id="Data-Source">Data Source<a class="anchor-link" href="#Data-Source">&#182;</a></h3><p><a href="https://www.kaggle.com/wordsforthewise/lending-club">Link to data</a></p>
-<h3 id="Part-1">Part-1<a class="anchor-link" href="#Part-1">&#182;</a></h3><p>The project is split into 3 notebooks. The part-1 notebook focuses on Data Exploratory Analysis</p>
+<h4 id="7.-Assess-any-additional-feature-engineering-or-feature-selection-opportunity-based-on-model-results">7. Assess any additional feature engineering or feature selection opportunity based on model results<a class="anchor-link" href="#7.-Assess-any-additional-feature-engineering-or-feature-selection-opportunity-based-on-model-results">&#182;</a></h4><h4 id="8.-Choose-the-best-model-and-evaluate-prediction-on-test-dataset">8. Choose the best model and evaluate prediction on test dataset<a class="anchor-link" href="#8.-Choose-the-best-model-and-evaluate-prediction-on-test-dataset">&#182;</a></h4><h4 id="9.-Areas-of-improvements">9. Areas of improvements<a class="anchor-link" href="#9.-Areas-of-improvements">&#182;</a></h4><h3 id="Part-1">Part-1<a class="anchor-link" href="#Part-1">&#182;</a></h3><p>The project is split into 3 notebooks. The notebook is part one, focusing on Data Exploratory Analysis</p>
+<h3 id="Data-Source">Data Source<a class="anchor-link" href="#Data-Source">&#182;</a></h3><p><a href="https://www.kaggle.com/wordsforthewise/lending-club">Link to data</a></p>
 
 </div>
 </div>
@@ -14392,7 +14395,9 @@ Number of Features in BrowseNotesFile: 120
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Noted that some of the columns/features in the dataset are not available at the moment of investing until the loans have been issued. So these features should be removed, otherwise they would leek information from the future. We can use the variables that are in the data dictionary BrowseNoteFile, which lists all information available to investors when they are deciding whether to invest to any loans.</p>
+<h4 id="Data-leakage-in-Machine-Learning">Data leakage in Machine Learning<a class="anchor-link" href="#Data-leakage-in-Machine-Learning">&#182;</a></h4><p>What is data leakage in Machine Learning?</p>
+<p>Some of your predictors (features/indepedent variables) that you are using in training your predictive models happen to have information about your target variables. <a href="https://machinelearningmastery.com/data-leakage-machine-learning/">See more here</a>.</p>
+<p>Noted that some of the columns/features in the dataset are not available at the moment of investing until the loans have been issued. So these features should be removed, otherwise they would leek information from the future. We can use the variables that are in the data dictionary BrowseNoteFile, which lists only information available to investors when they are deciding whether to invest to any loans.</p>
 <p>Noted that some features were named slightly different between the data dictionary sheet and the column names in the dataset but they referred to the same thing, so we will need to match the format between these column names.</p>
 
 </div>
@@ -14735,6 +14740,13 @@ dtype: object</pre>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Check-missing-values-in-the-target-variable">Check missing values in the target variable<a class="anchor-link" href="#Check-missing-values-in-the-target-variable">&#182;</a></h4>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[28]:</div>
@@ -15075,6 +15087,26 @@ height=569
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Re-define-target-variable-(to-be-binary-)">Re-define target variable (to be binary )<a class="anchor-link" href="#Re-define-target-variable-(to-be-binary-)">&#182;</a></h3><p>There are 9 loan statuses:</p>
+<ul>
+<li>Fully Paid </li>
+<li>Current, </li>
+<li>Charged Off</li>
+<li>In Grace Period</li>
+<li>Late (31-120 days)</li>
+<li>Late (16-30 days)</li>
+<li>Default</li>
+<li>Does not meet the credit policy. Status:Fully Paid,</li>
+<li>Does not meet the credit policy. Status:Charged Off </li>
+</ul>
+<p><strong>We consider "Fully Paid", "Current", and "Does not meet the credit policy. Status:Fully Paid" as a good-condition loans and everything else as bad-condition loans.</strong></p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[33]:</div>
@@ -15284,7 +15316,7 @@ height=283
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Overview-of-Loans">Overview of Loans<a class="anchor-link" href="#Overview-of-Loans">&#182;</a></h4><p>Let's get some basic information about the loans of lending club. I will be focusing on the followings:</p>
+<h4 id="Overview-of-Loans">Overview of Loans<a class="anchor-link" href="#Overview-of-Loans">&#182;</a></h4><p>Let's explore the data to see how features affect loan conditions. I will be focusing on the followings:</p>
 <ul>
 <li><p>loan amount vs funded amount</p>
 </li>
@@ -15294,6 +15326,20 @@ height=283
 </li>
 <li><p>loan issue year</p>
 </li>
+<li><p>Borrower's address (state)</p>
+</li>
+<li><p>Borrower's Annual Income</p>
+</li>
+<li><p>Borrower's Employment Length</p>
+</li>
+<li><p>Loan Grade</p>
+</li>
+<li><p>Home ownership</p>
+</li>
+<li><p>Debt-to-income ratioo</p>
+</li>
+<li><p>Loan Purpose</p>
+</li>
 </ul>
 
 </div>
@@ -15302,7 +15348,11 @@ height=283
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Loan-Amount-vs-Funded-Amount">Loan Amount vs Funded Amount<a class="anchor-link" href="#Loan-Amount-vs-Funded-Amount">&#182;</a></h4>
+<h3 id="Loan-Amount-vs-Funded-Amount">Loan Amount vs Funded Amount<a class="anchor-link" href="#Loan-Amount-vs-Funded-Amount">&#182;</a></h3><ul>
+<li>Majority of the loan amount is between $10,000 to $20,000, with an average of $15,044.</li>
+<li>The distribution between loan amount and funded amount is quite similar, implying that for loans that passed approval, borrowers were highly likely to be funded with the desired amount</li>
+</ul>
+
 </div>
 </div>
 </div>
@@ -15387,7 +15437,11 @@ Average Loan Amount : 15044.23
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Interest-Rate">Interest Rate<a class="anchor-link" href="#Interest-Rate">&#182;</a></h4>
+<h3 id="Interest-Rate">Interest Rate<a class="anchor-link" href="#Interest-Rate">&#182;</a></h3><ul>
+<li>Majority of interest rate is between 10% to 20%</li>
+<li>The average interest rate of good-condition loans (12.68%) is about 3% less than that of bad-condition loans (15.69%), implying that the higher interest rate (the higher monthly interest payment), the more likely that a loan defaults.</li>
+</ul>
+
 </div>
 </div>
 </div>
@@ -15505,7 +15559,7 @@ Bad Loans: 15.694198443769201
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Based on the distribution plot and mean statistics, bad loans tend to have a high interest rate than good loans of lending club.</p>
+<p><strong>Based on the distribution plot and mean statistics, bad loans tend to have a high interest rate than good loans of lending club.</strong></p>
 
 </div>
 </div>
@@ -15557,7 +15611,19 @@ height=279
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="loans-Terms">loans Terms<a class="anchor-link" href="#loans-Terms">&#182;</a></h4>
+<p>The plots shows that the better grade of loans, the lower interest rate.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Loans-Terms">Loans Terms<a class="anchor-link" href="#Loans-Terms">&#182;</a></h3><ul>
+<li>Loan term is either 36-month or 60-month (categorical variable)</li>
+<li>loan with shorter loan term (36 months compared to 60 months) has higher probability of turning into a bad loan </li>
+</ul>
+
 </div>
 </div>
 </div>
@@ -15613,7 +15679,18 @@ height=279
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Loan-Issue-Year">Loan Issue Year<a class="anchor-link" href="#Loan-Issue-Year">&#182;</a></h4>
+<p><strong>The plot above shows that a loan with shorter loan term (36 months compared to 60 months) is more like to turn into a bad loan.</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Loan-Issue-Year">Loan Issue Year<a class="anchor-link" href="#Loan-Issue-Year">&#182;</a></h3><ul>
+<li>From 2007 to 2018 number of loans issued every year is growing</li>
+</ul>
+
 </div>
 </div>
 </div>
@@ -15702,7 +15779,11 @@ height=388
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Borrower's-Address(states)">Borrower's Address(states)<a class="anchor-link" href="#Borrower's-Address(states)">&#182;</a></h4>
+<h3 id="Borrower's-Address(states)">Borrower's Address(states)<a class="anchor-link" href="#Borrower's-Address(states)">&#182;</a></h3><ul>
+<li>Top 3 states in terms of number of loans issued: Califonia, New York and Texas</li>
+<li>Top 3 states in terms of percentage of issued loans that are in bad-condition: Iowa, Alabama, Arkansas</li>
+</ul>
+
 </div>
 </div>
 </div>
@@ -16107,7 +16188,18 @@ height=723
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Borrower's-Annual-Income">Borrower's Annual Income<a class="anchor-link" href="#Borrower's-Annual-Income">&#182;</a></h4>
+<p><strong>Both the bar plots and summary table (default rate by state) show that some state have higher default rate than others.</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Borrower's-Annual-Income">Borrower's Annual Income<a class="anchor-link" href="#Borrower's-Annual-Income">&#182;</a></h3><ul>
+<li>The higher the income level of borrower, the less likely the loan turns into default.</li>
+</ul>
+
 </div>
 </div>
 </div>
@@ -16381,7 +16473,7 @@ height=428
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can see from the plot above, the higher the income level, the lower the loan default rate.</p>
+<p><strong>We can see from the plot above, the higher the income level, the lower the loan default rate.</strong></p>
 
 </div>
 </div>
@@ -16389,7 +16481,10 @@ height=428
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Borrower's-employment-length">Borrower's employment length<a class="anchor-link" href="#Borrower's-employment-length">&#182;</a></h4>
+<h3 id="Borrower's-employment-length">Borrower's employment length<a class="anchor-link" href="#Borrower's-employment-length">&#182;</a></h3><ul>
+<li>There is no clear pattern between loan default and employment length.</li>
+</ul>
+
 </div>
 </div>
 </div>
@@ -16498,7 +16593,7 @@ emp_length &lt;= 3 ys:  0.2541
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>There is no clear pattern between loan default and employment length. Noted that both people with long employment length(10+ years) and short employment length(&lt;= 3 years) tend to borrow more.</p>
+<p><strong>There is no clear pattern between loan default and employment length. Noted that both people with long employment length(10+ years) and short employment length(&lt;= 3 years) tend to borrow more.</strong></p>
 
 </div>
 </div>
@@ -16506,7 +16601,10 @@ emp_length &lt;= 3 ys:  0.2541
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Loan-Grade">Loan Grade<a class="anchor-link" href="#Loan-Grade">&#182;</a></h4>
+<h3 id="Loan-Grade">Loan Grade<a class="anchor-link" href="#Loan-Grade">&#182;</a></h3><ul>
+<li>The better the loan grade(Grade A as opposite to Grade G), the lower probability that a loan turns into bad-condition</li>
+</ul>
+
 </div>
 </div>
 </div>
@@ -16635,7 +16733,7 @@ height=388
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>From the plot above, noted that the better the loan grade, the lower the "bad" loan ratios</p>
+<p><strong>From the plot above, noted that the better the loan grade, the lower the "bad" loan ratios.</strong></p>
 
 </div>
 </div>
@@ -16643,7 +16741,11 @@ height=388
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Home-ownership">Home ownership<a class="anchor-link" href="#Home-ownership">&#182;</a></h4>
+<h3 id="Home-ownership">Home ownership<a class="anchor-link" href="#Home-ownership">&#182;</a></h3><ul>
+<li>It's unclear of the relationship between home ownership and bad-loans</li>
+<li>On average, 13.5% of home-owners in the dataset has turned a loan into default, while 15.6% of borrowers who rent has bad loans and 11.7% of mortage-holders has default loans.</li>
+</ul>
+
 </div>
 </div>
 </div>
@@ -16713,7 +16815,10 @@ height=388
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="debt-to-income">debt-to-income<a class="anchor-link" href="#debt-to-income">&#182;</a></h4><p>A ratio of the borrower’s total monthly debt payments on the total debt obligations divided by the borrower’s self-reported monthly income. This ratio reveals the ability of borrower to repay their loans with their income.</p>
+<h3 id="Debt-to-income">Debt-to-income<a class="anchor-link" href="#Debt-to-income">&#182;</a></h3><ul>
+<li>The higher debt-to-income ratio, the higher chance that the loans in bad-condition</li>
+<li>Debt-to-income is the ratio of the borrower’s total monthly debt payments on the total debt obligations divided by the borrower’s self-reported monthly income. This ratio reveals the ability of borrower to repay their loans with their income.</li>
+</ul>
 
 </div>
 </div>
@@ -16984,7 +17089,26 @@ height=414
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Loan-Purpose">Loan Purpose<a class="anchor-link" href="#Loan-Purpose">&#182;</a></h4>
+<p>Dividing loans into 4 groupbs based on borrowers' debt-to-income ratio:</p>
+<ul>
+<li>Low dti (below 25%): dti &lt; 11.89</li>
+<li>Median dti (between 25% and 75%): 11.89 &lt;= dti &lt; 24.48</li>
+<li>High dti (above 75% below 95%):  24.48 &lt;= dti &lt; 33.88</li>
+<li>Extreme high dti (Above 95%): dti &gt; 33.88</li>
+</ul>
+<p>For high and extreme-high debt-to-income ratio groups, the percentage of loans that are in bad-condition(label = 1) is the highest, above 16%. The group of loans whose borrowers have median debt-to-income ratio has about 13% of chance of turning in bad loans. The borrowers has low debt-to-income ratio is least likely to bad loans (10.6%).</p>
+<p><strong>What the plot above shows is: the higher debt-to-income ratio, the higher chance that the loans in bad-condition.</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Loan-Purpose">Loan Purpose<a class="anchor-link" href="#Loan-Purpose">&#182;</a></h3><ul>
+<li>Top 3 reasons of people borrows on Lending club: Debt reconsolidation, Credit card payment and home improvement</li>
+</ul>
+
 </div>
 </div>
 </div>
@@ -17042,7 +17166,7 @@ height=457
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Noted that about 56% of the loans are used for debt_consolidation, 22.87% for  credit card, and 6.66% for home_improvement.</p>
+<p><strong>Noted that about 56% of the loans are used for debt_consolidation, 22.87% for  credit card, and 6.66% for home_improvement</strong></p>
 
 </div>
 </div>
@@ -17050,7 +17174,7 @@ height=457
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Colinearity">Colinearity<a class="anchor-link" href="#Colinearity">&#182;</a></h3>
+<h2 id="Colinearity">Colinearity<a class="anchor-link" href="#Colinearity">&#182;</a></h2>
 </div>
 </div>
 </div>
